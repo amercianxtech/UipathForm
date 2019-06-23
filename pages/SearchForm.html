@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>UiPathTest Arjun</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Social Buttons CSS -->
+    <link href="../vendor/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    
+ 
+ <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Invoices - Search                    <small></small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li class="active">Invoices - Search</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+		
+
+<div class="main-container">	<div class="row">
+        <div class="col-md-6">		
+			<p>You may search based on the Vendor's TaxID OR based on the Invoice Number.</p>
+			<form name="searchForm" id="searchForm" novalidate>
+				<div class="control-group form-group">
+					<div class="controls">
+						<label>Vendor TaxID:</label>
+						<input type="text" class="form-control" id="vendorTaxID" name="vendorTaxID">
+						<p class="help-block"></p>
+					</div>
+				</div>
+				<p>- OR - </p>
+				<div class="control-group form-group">
+					<div class="controls">
+						<label>Invoice Number:</label>
+						<input type="text" class="form-control" id="invoiceNumber" name="invoiceNumber">
+						<p class="help-block"></p>
+					</div>
+				</div>
+				<div id="success"></div>
+				<!-- For success/fail messages -->
+				<button type="button" class="btn btn-primary" id="buttonSearch">Search</button>		
+				<button type="button" class="btn btn-secondary" id="buttonShowAll">Display All Invoices</button>							
+			</form>
+			
+		</div>
+	</div>
+		
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+
+		jQuery('#buttonShowAll').click(function(ev){
+				ev.preventDefault();
+				window.location.href = "http://huviair.com/";
+		});
+		
+		jQuery('#buttonSearch').click(function(ev){
+				ev.preventDefault();				
+
+				var vTaxID = jQuery('#vendorTaxID').val();
+				var iNumber = jQuery('#invoiceNumber').val();
+				
+				// If nothing is filled
+				if (vTaxID == "" && iNumber == "") {
+					alert('Plase fill in either the Vendor TaxID or the Invoice Number!');
+					return;
+				}
+				
+				// If both fields are filled				
+				if (vTaxID != "" && iNumber != "") {
+					location.reload();
+					return;
+				}
+
+				// Search by TaxID
+				if (vTaxID != "") {
+					window.location.href = "https://acme-test.uipath.com/invoices/results-by-vendorid/" + vTaxID;
+				}
+				
+				// Search by Name
+				if (iNumber != "") {
+					window.location.href = "https://acme-test.uipath.com/invoices/results-by-number/" + iNumber;
+				}
+			})	
+		});  
+	</script></div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+					<hr>
+                    <p>Copyright &copy; Arjun</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-select.min.js"></script>
+	
+</body>
+</html>
